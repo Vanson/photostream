@@ -13,12 +13,7 @@ protocol ProfileEditHeaderViewDelegate: class {
     func didTapToChangeAvatar()
 }
 
-@objc protocol ProfileEditHeaderViewAction: class {
-    
-    func didTapAvatarButton()
-}
-
-class ProfileEditHeaderView: UIView, ProfileEditHeaderViewAction {
+class ProfileEditHeaderView: UIView {
     
     weak var delegate: ProfileEditHeaderViewDelegate?
     
@@ -44,7 +39,7 @@ class ProfileEditHeaderView: UIView, ProfileEditHeaderViewAction {
         avatarImageView.cornerRadius = avatarDimension / 2
         
         avatarButton = UIButton(type: .system)
-        avatarButton.addTarget(self, action: #selector(self.didTapAvatarButton), for: .touchUpInside)
+        avatarButton.addTarget(self, action: #selector((self.didTapAvatarButton)), for: .touchUpInside)
         avatarButton.setTitle("Change Avatar", for: .normal)
         
         progressView = UILabel()
@@ -83,7 +78,7 @@ class ProfileEditHeaderView: UIView, ProfileEditHeaderViewAction {
         avatarButton.frame = rect
     }
     
-    func didTapAvatarButton() {
+    @objc func didTapAvatarButton() {
         delegate?.didTapToChangeAvatar()
     }
 }

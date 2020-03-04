@@ -8,13 +8,7 @@
 
 import UIKit
 
-@objc protocol PostLikeViewControllerAction: class {
-    
-    func triggerRefresh()
-    func back()
-}
-
-class PostLikeViewController: UITableViewController, PostLikeViewControllerAction {
+class PostLikeViewController: UITableViewController {
 
     lazy var emptyView: GhostView! = {
         let view = GhostView()
@@ -32,7 +26,7 @@ class PostLikeViewController: UITableViewController, PostLikeViewControllerActio
     }()
     
     lazy var loadingView: UIActivityIndicatorView! = {
-        let view = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        let view = UIActivityIndicatorView(style: .gray)
         view.hidesWhenStopped = true
         return view
     }()
@@ -101,7 +95,7 @@ class PostLikeViewController: UITableViewController, PostLikeViewControllerActio
         presenter.viewDidLoad()
     }
     
-    func triggerRefresh() {
+    @objc func triggerRefresh() {
         presenter.refresh()
     }
     
@@ -112,7 +106,7 @@ class PostLikeViewController: UITableViewController, PostLikeViewControllerActio
         navigationItem.title = "Likes"
     }
     
-    func back() {
+    @objc func back() {
         presenter.exit()
     }
 }

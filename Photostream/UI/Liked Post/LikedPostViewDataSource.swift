@@ -29,7 +29,7 @@ extension LikedPostViewController {
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
             
-        case UICollectionElementKindSectionHeader:
+        case UICollectionView.elementKindSectionHeader:
             let header = PostListCollectionHeader.dequeue(from: collectionView, for: indexPath)!
             let item = presenter.post(at: indexPath.section) as? PostListCollectionHeaderItem
             header.configure(with: item)

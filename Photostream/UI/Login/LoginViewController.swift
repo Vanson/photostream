@@ -40,7 +40,7 @@ class LoginViewController: UIViewController {
     }
 
     fileprivate func addIndicatorView() {
-        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        let indicator = UIActivityIndicatorView(style: .white)
         indicator.startAnimating()
         indicator.tag = 9000
         loginButton.addSubviewAtCenter(indicator)
@@ -83,7 +83,7 @@ extension LoginViewController: LoginViewInterface {
         
         view.endEditing(false)
         
-        loginButton.setTitle("", for: UIControlState())
+        loginButton.setTitle("", for: UIControl.State())
         view.isUserInteractionEnabled = false
         addIndicatorView()
 
@@ -91,7 +91,7 @@ extension LoginViewController: LoginViewInterface {
     }
     
     func didReceiveError(message: String) {
-        loginButton.setTitle("Login", for: UIControlState())
+        loginButton.setTitle("Login", for: UIControl.State())
         view.isUserInteractionEnabled = true
         removeIndicatorView()
         

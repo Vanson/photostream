@@ -9,7 +9,7 @@
 import GPUImage
 
 class PhotoCapturePresenter: PhotoCapturePresenterInterface {
-
+    
     weak var moduleDelegate: PhotoCaptureModuleDelegate?
     weak var view: PhotoCaptureViewInterface!
     var wireframe: PhotoCaptureWireframeInterface!

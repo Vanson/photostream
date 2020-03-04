@@ -53,8 +53,8 @@ extension BaseModuleWireframe {
             parent.present(controller, animated: property.animated, completion: nil)
         case .attach:
             parent.view.addSubview(controller.view)
-            parent.addChildViewController(controller)
-            controller.didMove(toParentViewController: parent)
+            parent.addChild(controller)
+            controller.didMove(toParent: parent)
         case .root where root != nil:
             root!.window.rootViewController = controller
         default:
@@ -74,8 +74,8 @@ extension BaseModuleWireframe {
             controller.dismiss(animated: property.animated, completion: nil)
         case .attach where controller.parent != nil:
             controller.view.removeFromSuperview()
-            controller.removeFromParentViewController()
-            controller.didMove(toParentViewController: nil)
+            controller.removeFromParent()
+            controller.didMove(toParent: nil)
         default:
             break
         }

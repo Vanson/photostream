@@ -25,11 +25,6 @@ protocol CommentControllerInterface: BaseModuleWireframe {
     func setupWriter()
 }
 
-@objc protocol CommentControllerAction: class {
-    
-    func back()
-}
-
 extension CommentControllerInterface {
     
     func setupModules() {
@@ -38,7 +33,7 @@ extension CommentControllerInterface {
     }
 }
 
-class CommentController: UIViewController, CommentControllerInterface, CommentControllerAction {
+class CommentController: UIViewController, CommentControllerInterface {
 
     weak var delegate: CommentControllerDelegate?
     
@@ -93,7 +88,7 @@ class CommentController: UIViewController, CommentControllerInterface, CommentCo
         isModuleSetup = true
     }
     
-    func back() {
+    @objc func back() {
         var property = WireframeExitProperty()
         property.controller = self
         exit(with: property)

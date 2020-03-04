@@ -7,6 +7,8 @@
 //
 
 import Photos
+import UIKit
+
 
 protocol PhotoLibraryPresenterInterface: class {
 

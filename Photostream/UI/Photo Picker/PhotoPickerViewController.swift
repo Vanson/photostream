@@ -17,11 +17,11 @@ class PhotoPickerViewController: UIViewController {
     
     var presenter: PhotoPickerModuleInterface!
     var pageViewController: UIPageViewController? {
-        guard !childViewControllers.isEmpty else {
+        guard !children.isEmpty else {
             return nil
         }
         
-        let vc = childViewControllers[0] as? UIPageViewController
+        let vc = children[0] as? UIPageViewController
         return vc
     }
     

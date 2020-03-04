@@ -75,7 +75,7 @@ extension UserTableCell: UserTableCellConfig {
         var titleColor: UIColor!
         var backgroundColor: UIColor!
         var borderColor: UIColor!
-        var loadingViewStyle: UIActivityIndicatorViewStyle!
+        var loadingViewStyle: UIActivityIndicatorView.Style!
         
         if isFollowing {
             title = "Following"
@@ -104,7 +104,7 @@ extension UserTableCell: UserTableCellConfig {
             actionLoadingView.stopAnimating()
         }
         
-        actionLoadingView.activityIndicatorViewStyle = loadingViewStyle
+        actionLoadingView.style = loadingViewStyle
         actionLoadingView.backgroundColor = backgroundColor
         actionLoadingView.borderColor = borderColor
         

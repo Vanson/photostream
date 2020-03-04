@@ -13,12 +13,7 @@ protocol CommentListCellDelegate: class {
     func didTapAuthor(cell: CommentListCell)
 }
 
-@objc protocol CommentListCellAction: class {
-    
-    func didTapAuthor()
-}
-
-class CommentListCell: UITableViewCell, CommentListCellAction {
+class CommentListCell: UITableViewCell {
 
     weak var delegate: CommentListCellDelegate?
     
@@ -31,7 +26,7 @@ class CommentListCell: UITableViewCell, CommentListCellAction {
         self.init(style: .default, reuseIdentifier: "CommentListCell")
     }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: CommentListCell.reuseId)
         initSetup()
     }
@@ -97,7 +92,7 @@ class CommentListCell: UITableViewCell, CommentListCellAction {
         timeLabel.frame = frame
     }
     
-    func didTapAuthor() {
+    @objc func didTapAuthor() {
         delegate?.didTapAuthor(cell: self)
     }
 }

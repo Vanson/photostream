@@ -8,17 +8,12 @@
 
 import UIKit
 
-@objc protocol SinglePostViewControllerAction: class {
-    
-    func back()
-}
-
-class SinglePostViewController: UICollectionViewController, SinglePostViewControllerAction {
+class SinglePostViewController: UICollectionViewController {
     
     lazy var prototype: PostListCollectionCell! = PostListCollectionCell()
     
     lazy var loadingView: UIActivityIndicatorView! = {
-        let view = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        let view = UIActivityIndicatorView(style: .gray)
         view.hidesWhenStopped = true
         return view
     }()
@@ -94,7 +89,7 @@ class SinglePostViewController: UICollectionViewController, SinglePostViewContro
         navigationItem.title = "Post"
     }
     
-    func back() {
+    @objc func back() {
         presenter.exit()
     }
 }

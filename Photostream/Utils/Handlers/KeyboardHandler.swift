@@ -31,10 +31,10 @@ struct KeyboardHandler {
     
     func handle(using view: UIView, with animation: ((KeyboardFrameDelta) -> Void)? = nil) {
         guard let userInfo = info,
-            let curve = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? UInt,
-            let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? Double,
-            let frameEnd = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue,
-            let frameBegin = userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue,
+            let curve = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? UInt,
+            let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double,
+            let frameEnd = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
+            let frameBegin = userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue,
             let window = view.window,
             let superview = view.superview else {
             return
@@ -43,7 +43,7 @@ struct KeyboardHandler {
         let rectEnd = frameEnd.cgRectValue
         let rectBegin = frameBegin.cgRectValue
         
-        let options = UIViewAnimationOptions(rawValue: curve << 16)
+        let options = UIView.AnimationOptions(rawValue: curve << 16)
         let rectWindow = view.convert(CGRect.zero, to: nil)
         
         var insetBottom = window.bounds.size.height - rectWindow.origin.y

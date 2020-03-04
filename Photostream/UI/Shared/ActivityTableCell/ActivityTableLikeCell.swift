@@ -14,13 +14,7 @@ protocol ActivityTableLikeCellDelegate: class {
     func didTapAvatar(cell: UITableViewCell)
 }
 
-@objc protocol ActivityTableLikeCellAction: class {
-    
-    func didTapPhoto()
-    func didTapAvatar()
-}
-
-class ActivityTableLikeCell: UITableViewCell, ActivityTableLikeCellAction {
+class ActivityTableLikeCell: UITableViewCell {
     
     weak var delegate: ActivityTableLikeCellDelegate?
     
@@ -32,7 +26,7 @@ class ActivityTableLikeCell: UITableViewCell, ActivityTableLikeCellAction {
         self.init(style: .default, reuseIdentifier: ActivityTableLikeCell.reuseId)
     }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         initSetup()
     }
@@ -97,11 +91,11 @@ class ActivityTableLikeCell: UITableViewCell, ActivityTableLikeCellAction {
         contentLabel.frame = rect
     }
     
-    func didTapPhoto() {
+    @objc func didTapPhoto() {
         delegate?.didTapPhoto(cell: self)
     }
     
-    func didTapAvatar() {
+    @objc func didTapAvatar() {
         delegate?.didTapAvatar(cell: self)
     }
 }

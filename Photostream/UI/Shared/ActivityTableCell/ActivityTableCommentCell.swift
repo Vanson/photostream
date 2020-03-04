@@ -14,13 +14,7 @@ protocol ActivityTableCommentCellDelegate: class {
     func didTapAvatar(cell: UITableViewCell)
 }
 
-@objc protocol ActivityTableCommentCellAction: class {
-
-    func didTapPhoto()
-    func didTapAvatar()
-}
-
-class ActivityTableCommentCell: UITableViewCell, ActivityTableCommentCellAction {
+class ActivityTableCommentCell: UITableViewCell {
 
     weak var delegate: ActivityTableCommentCellDelegate?
     
@@ -32,7 +26,7 @@ class ActivityTableCommentCell: UITableViewCell, ActivityTableCommentCellAction 
         self.init(style: .default, reuseIdentifier: ActivityTableCommentCell.reuseId)
     }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         initSetup()
     }
@@ -97,11 +91,11 @@ class ActivityTableCommentCell: UITableViewCell, ActivityTableCommentCellAction 
         contentLabel.frame = rect
     }
     
-    func didTapPhoto() {
+    @objc func didTapPhoto() {
         delegate?.didTapPhoto(cell: self)
     }
     
-    func didTapAvatar() {
+    @objc func didTapAvatar() {
         delegate?.didTapAvatar(cell: self)
     }
 }

@@ -112,7 +112,7 @@ class UserProfileView: UIView, UserProfileViewAction {
         bioLabel.numberOfLines = 3
         bioLabel.font = UIFont.systemFont(ofSize: 12)
         
-        actionLoadingView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        actionLoadingView = UIActivityIndicatorView(style: .gray)
         actionLoadingView.hidesWhenStopped = true
         actionLoadingView.backgroundColor = UIColor.white
         actionLoadingView.cornerRadius = 2

@@ -7,14 +7,10 @@
 //
 
 import UIKit
+import MONUniformFlowLayout
 import DateTools
 
-@objc protocol NewsFeedViewControllerAction: class {
-    
-    func triggerRefresh()
-}
-
-class NewsFeedViewController: UIViewController, NewsFeedViewControllerAction {
+class NewsFeedViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var listLayout: UICollectionViewFlowLayout!
@@ -37,7 +33,7 @@ class NewsFeedViewController: UIViewController, NewsFeedViewControllerAction {
     }()
     
     lazy var loadingView: UIActivityIndicatorView! = {
-        let view = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        let view = UIActivityIndicatorView(style: .gray)
         view.hidesWhenStopped = true
         return view
     }()
@@ -101,7 +97,7 @@ class NewsFeedViewController: UIViewController, NewsFeedViewControllerAction {
         presenter.initialLoad()
     }
     
-    func triggerRefresh() {
+    @objc func triggerRefresh() {
         presenter.refreshFeeds()
     }
 }

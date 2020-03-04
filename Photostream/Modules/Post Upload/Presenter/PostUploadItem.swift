@@ -15,7 +15,7 @@ struct PostUploadItem {
     
     var imageData: FileServiceImageUploadData {
         var data = FileServiceImageUploadData()
-        data.data = UIImageJPEGRepresentation(image, 1.0)
+        data.data = image.jpegData(compressionQuality: 1.0)
         data.width = Float(image.size.width)
         data.height = Float(image.size.height)
         return data

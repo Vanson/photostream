@@ -19,11 +19,11 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.1</string>
+	<string>1</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
-		<string>98aca4b74d3e5d28d01373f849238205c4601674</string>
+		<string>68836e102e80b66c65acdeb974816e9e378f32a4</string>
 		<key>Kits</key>
 		<array>
 			<dict>
@@ -34,6 +34,8 @@
 			</dict>
 		</array>
 	</dict>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>

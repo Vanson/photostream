@@ -38,7 +38,7 @@ class UserPostViewController: UICollectionViewController, UserPostViewController
     }()
     
     lazy var loadingView: UIActivityIndicatorView! = {
-        let view = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        let view = UIActivityIndicatorView(style: .gray)
         view.hidesWhenStopped = true
         return view
     }()

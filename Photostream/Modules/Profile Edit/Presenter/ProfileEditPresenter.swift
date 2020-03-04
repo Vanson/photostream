@@ -75,7 +75,7 @@ extension ProfileEditPresenter: ProfileEditModuleInterface {
     }
     
     func uploadAvatar(with image: UIImage) {
-        let imageData = UIImageJPEGRepresentation(image, 1.0)
+        let imageData = image.jpegData(compressionQuality: 1.0)
         var uploadData = FileServiceImageUploadData()
         uploadData.data = imageData
         interactor.uploadAvatar(data: uploadData)

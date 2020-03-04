@@ -8,13 +8,7 @@
 
 import UIKit
 
-@objc protocol CommentFeedViewControllerAction: class {
-    
-    func back()
-    func triggerRefresh()
-}
-
-class CommentFeedViewController: UITableViewController, CommentFeedViewControllerAction {
+class CommentFeedViewController: UITableViewController {
     
     var presenter: CommentFeedModuleInterface!
     var indicatorView: UIActivityIndicatorView!
@@ -76,9 +70,9 @@ class CommentFeedViewController: UITableViewController, CommentFeedViewControlle
         super.loadView()
         
         refreshView = UIRefreshControl()
-        refreshView.addTarget(self, action: #selector(self.triggerRefresh), for: .valueChanged)
+        refreshView.addTarget(self, action: #selector(CommentFeedViewController.triggerRefresh), for: .valueChanged)
         
-        indicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        indicatorView = UIActivityIndicatorView(style: .gray)
         indicatorView.hidesWhenStopped = true
         
         emptyView = CommentFeedEmptyView()
@@ -93,7 +87,7 @@ class CommentFeedViewController: UITableViewController, CommentFeedViewControlle
         
         title = "Comments"
         
-        let barItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back_nav_icon"), style: .plain, target: self, action: #selector(self.back))
+        let barItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back_nav_icon"), style: .plain, target: self, action: #selector(CommentFeedViewController.back))
         navigationItem.leftBarButtonItem = barItem
     }
     
@@ -103,7 +97,7 @@ class CommentFeedViewController: UITableViewController, CommentFeedViewControlle
         presenter.refreshComments()
     }
     
-    func back() {
+    @objc func back() {
         presenter.exit()
     }
     
@@ -131,7 +125,7 @@ class CommentFeedViewController: UITableViewController, CommentFeedViewControlle
         }
     }
     
-    func triggerRefresh() {
+    @objc func triggerRefresh() {
         presenter.refreshComments()
     }
 }

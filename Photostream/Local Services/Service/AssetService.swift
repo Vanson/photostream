@@ -8,6 +8,8 @@
 
 import Foundation
 import Photos
+import UIKit
+
 
 protocol AssetServiceObserver: class {
     

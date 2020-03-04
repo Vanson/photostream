@@ -41,7 +41,7 @@ extension NewsFeedViewController: UICollectionViewDataSource {
         let item = presenter.feed(at: indexPath.section)
         
         switch kind {
-        case UICollectionElementKindSectionHeader where item is NewsFeedPost:
+        case UICollectionView.elementKindSectionHeader where item is NewsFeedPost:
             return header(from: collectionView, at: indexPath, for: item as? NewsFeedPost)
         default:
             return UICollectionReusableView()

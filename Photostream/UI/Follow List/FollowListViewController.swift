@@ -8,13 +8,7 @@
 
 import UIKit
 
-@objc protocol FollowListViewControllerAction: class {
-    
-    func triggerRefresh()
-    func back()
-}
-
-class FollowListViewController: UITableViewController, FollowListViewControllerAction {
+class FollowListViewController: UITableViewController {
 
     lazy var emptyView: GhostView! = {
         let view = GhostView()
@@ -32,7 +26,7 @@ class FollowListViewController: UITableViewController, FollowListViewControllerA
     }()
     
     lazy var loadingView: UIActivityIndicatorView! = {
-        let view = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        let view = UIActivityIndicatorView(style: .gray)
         view.hidesWhenStopped = true
         return view
     }()
@@ -101,18 +95,18 @@ class FollowListViewController: UITableViewController, FollowListViewControllerA
         presenter.viewDidLoad()
     }
     
-    func triggerRefresh() {
+    @objc func triggerRefresh() {
         presenter.refresh()
     }
     
     func setupNavigationItem() {
-        let barItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back_nav_icon"), style: .plain, target: self, action: #selector(self.back))
+        let barItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back_nav_icon"), style: .plain, target: self, action: #selector(FollowListViewController.back))
         navigationItem.leftBarButtonItem = barItem
         
         navigationItem.title = presenter.navigationItemTitle
     }
     
-    func back() {
+    @objc func back() {
         presenter.exit()
     }
 }

@@ -50,7 +50,7 @@ class UserTimelineView: UIView {
         postView.scrollIndicatorInsets.top = rect.maxY
         postView.contentInset.top = rect.maxY
         
-        bringSubview(toFront: header)
+        bringSubviewToFront(header)
     }
     
     func initSetup() {

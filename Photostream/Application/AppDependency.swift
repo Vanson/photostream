@@ -9,11 +9,11 @@
 import UIKit
 import FirebaseAuth
 
-class AppDependency {
+class AppDependency: NSObject {
 
     var appWireframe: AppWireframe!
 
-    init() {
+    override init() {
         self.appWireframe = AppWireframe()
     }
 

@@ -17,15 +17,6 @@ protocol PostListCollectionCellDelegate: class {
     func didTapLikeCount(cell: PostListCollectionCell)
 }
 
-@objc protocol PostListCollectionCellAction: class {
-    
-    func didTapHeart()
-    func didTapComment()
-    func didTapPhoto()
-    func didTapCommentCount()
-    func didTapLikeCount()
-}
-
 class PostListCollectionCell: UICollectionViewCell {
 
     weak var delegate: PostListCollectionCellDelegate?
@@ -168,28 +159,28 @@ class PostListCollectionCell: UICollectionViewCell {
     }
 }
 
-extension PostListCollectionCell: PostListCollectionCellAction {
+extension PostListCollectionCell {
     
-    func didTapHeart() {
+    @objc func didTapHeart() {
         delegate?.didTapHeart(cell: self)
     }
     
-    func didTapComment() {
+    @objc func didTapComment() {
         delegate?.didTapComment(cell: self)
     }
     
-    func didTapPhoto() {
+    @objc func didTapPhoto() {
         animateHeartButton { }
         showAnimatedHeart {
             self.delegate?.didTapPhoto(cell: self)
         }
     }
     
-    func didTapCommentCount() {
+    @objc func didTapCommentCount() {
         delegate?.didTapCommentCount(cell: self)
     }
     
-    func didTapLikeCount() {
+    @objc func didTapLikeCount() {
         delegate?.didTapLikeCount(cell: self)
     }
 }

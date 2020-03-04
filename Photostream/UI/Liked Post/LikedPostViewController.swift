@@ -8,18 +8,12 @@
 
 import UIKit
 
-@objc protocol LikedPostViewControllerAction: class {
-    
-    func triggerRefresh()
-    func back()
-}
-
-class LikedPostViewController: UICollectionViewController, LikedPostViewControllerAction {
+class LikedPostViewController: UICollectionViewController {
 
     lazy var prototype: PostListCollectionCell! = PostListCollectionCell()
     
     lazy var loadingView: UIActivityIndicatorView! = {
-        let view = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        let view = UIActivityIndicatorView(style: .gray)
         view.hidesWhenStopped = true
         return view
     }()
@@ -147,11 +141,11 @@ class LikedPostViewController: UICollectionViewController, LikedPostViewControll
         navigationItem.title = "Liked Post"
     }
     
-    func back() {
+    @objc func back() {
         presenter.exit()
     }
     
-    func triggerRefresh() {
+    @objc func triggerRefresh() {
         presenter.refresh()
     }
 }

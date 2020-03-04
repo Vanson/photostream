@@ -8,12 +8,7 @@
 
 import UIKit
 
-@objc protocol RegistrationViewControllerAction: class {
-
-    func didTapView()
-}
-
-class RegistrationViewController: UIViewController, RegistrationViewControllerAction {
+class RegistrationViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -81,7 +76,7 @@ class RegistrationViewController: UIViewController, RegistrationViewControllerAc
         presenter.exit()
     }
     
-    func didTapView() {
+    @objc func didTapView() {
         view.endEditing(true)
     }
 }
@@ -107,7 +102,7 @@ extension RegistrationViewController {
     }
     
     fileprivate func addIndicatorView() {
-        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        let indicator = UIActivityIndicatorView(style: .white)
         indicator.startAnimating()
         indicator.tag = 9000
         registerButton.addSubviewAtCenter(indicator)
@@ -122,7 +117,7 @@ extension RegistrationViewController {
     
     fileprivate func addKeyboardObserver() {
         keyboardObserver = NotificationCenter.default.addObserver(
-            forName: Notification.Name.UIKeyboardWillChangeFrame,
+            forName: UIResponder.keyboardWillChangeFrameNotification,
             object: nil,
             queue: nil) { [unowned self] notif in
                 self.willHandleKeyboardNotification(with: notif)
@@ -192,7 +187,7 @@ extension RegistrationViewController: RegistrationViewInterface {
         
         view.endEditing(false)
         
-        registerButton.setTitle("", for: UIControlState())
+        registerButton.setTitle("", for: UIControl.State())
         view.isUserInteractionEnabled = false
         addIndicatorView()
         
@@ -200,7 +195,7 @@ extension RegistrationViewController: RegistrationViewInterface {
     }
     
     func didReceiveError(message: String) {
-        registerButton.setTitle("Register", for: UIControlState())
+        registerButton.setTitle("Register", for: UIControl.State())
         view.isUserInteractionEnabled = true
         removeIndicatorView()
         

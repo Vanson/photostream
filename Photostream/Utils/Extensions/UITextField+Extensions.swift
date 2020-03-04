@@ -13,12 +13,12 @@ extension UITextField {
     @IBInspectable var placeholderColor: UIColor? {
         set {
             if let newValue = newValue {
-                attributedPlaceholder = NSAttributedString(string: placeholder!, attributes:[NSAttributedStringKey.foregroundColor: newValue])
+                attributedPlaceholder = NSAttributedString(string: placeholder!, attributes:[NSAttributedString.Key.foregroundColor: newValue])
             }
         }
         get {
             let attr = attributedPlaceholder?.attributes(at: 0, longestEffectiveRange: nil, in: NSMakeRange(0, attributedPlaceholder!.length))
-            return attr?[NSAttributedStringKey.foregroundColor] as? UIColor
+            return attr?[NSAttributedString.Key.foregroundColor] as? UIColor
         }
     }
 }

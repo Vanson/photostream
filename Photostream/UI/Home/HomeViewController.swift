@@ -8,12 +8,7 @@
 
 import UIKit
 
-@objc protocol HomeViewControllerAction: class {
-    
-    func showPostComposer()
-}
-
-class HomeViewController: UITabBarController, HomeViewControllerAction {
+class HomeViewController: UITabBarController {
 
     lazy var specialButton = UIButton()
     
@@ -48,7 +43,7 @@ class HomeViewController: UITabBarController, HomeViewControllerAction {
             let frame = CGRect(origin: point, size: size)
             specialButton.frame = frame
             
-            view.bringSubview(toFront: specialButton)
+            view.bringSubviewToFront(specialButton)
         }
     }
     
@@ -60,7 +55,7 @@ class HomeViewController: UITabBarController, HomeViewControllerAction {
         specialIndex = 2
     }
     
-    func showPostComposer() {
+    @objc func showPostComposer() {
         presenter.presentPostComposer()
     }
 }

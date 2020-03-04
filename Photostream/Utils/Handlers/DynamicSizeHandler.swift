@@ -38,7 +38,7 @@ struct DynamicSizeHandler<P:Hashable, S:Hashable> {
         prototype.setNeedsLayout()
         prototype.layoutIfNeeded()
         
-        let size = prototype.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+        let size = prototype.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
         sizes[key] = size
         
         return size

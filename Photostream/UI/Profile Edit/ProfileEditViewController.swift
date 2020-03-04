@@ -8,21 +8,14 @@
 
 import UIKit
 
-@objc protocol ProfileEditViewControllerAction: class {
-    
-    func back()
-    func save()
-    func stopEditing()
-}
-
-class ProfileEditViewController: UITableViewController, ProfileEditViewControllerAction {
+class ProfileEditViewController: UITableViewController {
     
     lazy var header: ProfileEditHeaderView = ProfileEditHeaderView()
     lazy var styleDefaultPrototype: ProfileEditTableCell = ProfileEditTableCell(style: .default)
     lazy var styleLineEditPrototype: ProfileEditTableCell = ProfileEditTableCell(style: .lineEdit)
     
     lazy var savingView: UIActivityIndicatorView = {
-        let view = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        let view = UIActivityIndicatorView(style: .white)
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         view.hidesWhenStopped = true
         return view
@@ -86,16 +79,16 @@ class ProfileEditViewController: UITableViewController, ProfileEditViewControlle
         navigationItem.rightBarButtonItem = barItem
     }
     
-    func back() {
+    @objc func back() {
         presenter.exit()
     }
     
-    func save() {
+    @objc func save() {
         stopEditing()
         presenter.updateProfile()
     }
     
-    func stopEditing() {
+    @objc func stopEditing() {
         view.endEditing(true)
     }
 }

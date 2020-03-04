@@ -120,9 +120,9 @@ extension ActivityTableLikeCell: ActivityTableLikeCellConfig {
         let semiBold = UIFont.systemFont(ofSize: font.pointSize, weight: UIFont.Weight.semibold)
         let regular = UIFont.systemFont(ofSize: font.pointSize)
         
-        let name = NSAttributedString(string: displayName, attributes: [NSAttributedStringKey.font: semiBold])
-        let message = NSAttributedString(string: contentMessage, attributes: [NSAttributedStringKey.font: regular])
-        let time = NSAttributedString(string: timeAgo, attributes: [NSAttributedStringKey.font: regular, NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+        let name = NSAttributedString(string: displayName, attributes: [NSAttributedString.Key.font: semiBold])
+        let message = NSAttributedString(string: contentMessage, attributes: [NSAttributedString.Key.font: regular])
+        let time = NSAttributedString(string: timeAgo, attributes: [NSAttributedString.Key.font: regular, NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         
         let text = NSMutableAttributedString()
         text.append(name)
@@ -197,9 +197,9 @@ extension ActivityTableCommentCell: ActivityTableCommentCellConfig {
         let semiBold = UIFont.systemFont(ofSize: font.pointSize, weight: UIFont.Weight.semibold)
         let regular = UIFont.systemFont(ofSize: font.pointSize)
         
-        let name = NSAttributedString(string: displayName, attributes: [NSAttributedStringKey.font: semiBold])
-        let message = NSAttributedString(string: contentMessage, attributes: [NSAttributedStringKey.font: regular])
-        let time = NSAttributedString(string: timeAgo, attributes: [NSAttributedStringKey.font: regular, NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+        let name = NSAttributedString(string: displayName, attributes: [NSAttributedString.Key.font: semiBold])
+        let message = NSAttributedString(string: contentMessage, attributes: [NSAttributedString.Key.font: regular])
+        let time = NSAttributedString(string: timeAgo, attributes: [NSAttributedString.Key.font: regular, NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         
         let text = NSMutableAttributedString()
         text.append(name)
@@ -273,9 +273,9 @@ extension ActivityTableFollowCell: ActivityTableFollowCellConfig {
         let semiBold = UIFont.systemFont(ofSize: font.pointSize, weight: UIFont.Weight.semibold)
         let regular = UIFont.systemFont(ofSize: font.pointSize)
         
-        let name = NSAttributedString(string: displayName, attributes: [NSAttributedStringKey.font: semiBold])
-        let message = NSAttributedString(string: contentMessage, attributes: [NSAttributedStringKey.font: regular])
-        let time = NSAttributedString(string: timeAgo, attributes: [NSAttributedStringKey.font: regular, NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+        let name = NSAttributedString(string: displayName, attributes: [NSAttributedString.Key.font: semiBold])
+        let message = NSAttributedString(string: contentMessage, attributes: [NSAttributedString.Key.font: regular])
+        let time = NSAttributedString(string: timeAgo, attributes: [NSAttributedString.Key.font: regular, NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         
         let text = NSMutableAttributedString()
         text.append(name)
@@ -355,9 +355,9 @@ extension ActivityTablePostCell: ActivityTablePostCellConfig {
         let semiBold = UIFont.systemFont(ofSize: font.pointSize, weight: UIFont.Weight.semibold)
         let regular = UIFont.systemFont(ofSize: font.pointSize)
         
-        let name = NSAttributedString(string: displayName, attributes: [NSAttributedStringKey.font: semiBold])
-        let message = NSAttributedString(string: contentMessage, attributes: [NSAttributedStringKey.font: regular])
-        let time = NSAttributedString(string: timeAgo, attributes: [NSAttributedStringKey.font: regular, NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+        let name = NSAttributedString(string: displayName, attributes: [NSAttributedString.Key.font: semiBold])
+        let message = NSAttributedString(string: contentMessage, attributes: [NSAttributedString.Key.font: regular])
+        let time = NSAttributedString(string: timeAgo, attributes: [NSAttributedString.Key.font: regular, NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         
         let text = NSMutableAttributedString()
         text.append(name)

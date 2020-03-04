@@ -14,13 +14,7 @@ protocol PostListCollectionHeaderDelegate: class {
     func didTapAvatar(header: PostListCollectionHeader, point: CGPoint)
 }
 
-@objc protocol PostListCollectionHeaderAction: class {
-    
-    func didTapDisplayName(_ tap: UITapGestureRecognizer)
-    func didTapAvatar(_ tap: UITapGestureRecognizer)
-}
-
-class PostListCollectionHeader: UICollectionReusableView, PostListCollectionHeaderAction {
+class PostListCollectionHeader: UICollectionReusableView {
     
     weak var delegate: PostListCollectionHeaderDelegate?
     
@@ -96,12 +90,12 @@ class PostListCollectionHeader: UICollectionReusableView, PostListCollectionHead
 
 extension PostListCollectionHeader {
     
-    func didTapDisplayName(_ tap: UITapGestureRecognizer) {
+    @objc func didTapDisplayName(_ tap: UITapGestureRecognizer) {
         let point = tap.location(in: self)
         delegate?.didTapDisplayName(header: self, point: point)
     }
     
-    func didTapAvatar(_ tap: UITapGestureRecognizer) {
+    @objc func didTapAvatar(_ tap: UITapGestureRecognizer) {
         let point = tap.location(in: self)
         delegate?.didTapAvatar(header: self, point: point)
     }
@@ -125,12 +119,12 @@ extension PostListCollectionHeader {
     }
     
     class func register(in view: UICollectionView) {
-        let kind = UICollectionElementKindSectionHeader
+        let kind = UICollectionView.elementKindSectionHeader
         view.register(self, forSupplementaryViewOfKind: kind, withReuseIdentifier: self.reuseId)
     }
     
     class func dequeue(from view: UICollectionView, for indexPath: IndexPath) -> PostListCollectionHeader?  {
-        let kind = UICollectionElementKindSectionHeader
+        let kind = UICollectionView.elementKindSectionHeader
         let header = view.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: self.reuseId, for: indexPath)
         return header as? PostListCollectionHeader
     }

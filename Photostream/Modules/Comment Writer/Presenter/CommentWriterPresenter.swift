@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol CommentWriterPresenterInterface: BaseModulePresenter, BaseModuleInteractable, BaseModuleDelegatable {
     
@@ -57,7 +58,7 @@ extension CommentWriterPresenter: CommentWriterModuleInterface {
     
     func addKeyboardObserver() {
         keyboardObserver = NotificationCenter.default.addObserver(
-            forName: Notification.Name.UIKeyboardWillChangeFrame,
+            forName: UIResponder.keyboardWillChangeFrameNotification,
             object: nil,
             queue: nil) { [unowned self] notif in
             var handler = KeyboardHandler()

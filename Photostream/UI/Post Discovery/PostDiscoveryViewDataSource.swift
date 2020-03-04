@@ -50,7 +50,7 @@ extension PostDiscoveryViewController {
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         switch kind {
-        case UICollectionElementKindSectionHeader where sceneType == .list:
+        case UICollectionView.elementKindSectionHeader where sceneType == .list:
             let header = PostListCollectionHeader.dequeue(from: collectionView, for: indexPath)!
             let item = presenter.post(at: indexPath.section) as? PostListCollectionHeaderItem
             header.configure(with: item)

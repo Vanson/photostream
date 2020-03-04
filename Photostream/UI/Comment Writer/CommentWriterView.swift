@@ -13,14 +13,7 @@ protocol CommentWriterViewDelegate: class {
     func willSend(with content: String?, view: CommentWriterView)
 }
 
-@objc protocol CommentWriterViewAction: class {
-    
-    func didTapPlaceholder()
-    func contentDidChangeText(notif: NSNotification)
-    func didTapSend()
-}
-
-class CommentWriterView: UIView, CommentWriterViewAction {
+class CommentWriterView: UIView {
     
     fileprivate let spacing: CGFloat = 4
     fileprivate let textColor: UIColor = UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 1)
@@ -123,7 +116,7 @@ class CommentWriterView: UIView, CommentWriterViewAction {
         placeholderLabel.font = contentFont
         placeholderLabel.isUserInteractionEnabled = true
         
-        loadingView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        loadingView = UIActivityIndicatorView(style: .gray)
         loadingView.hidesWhenStopped = true
         
         addPlaceholderTap()
@@ -139,18 +132,18 @@ class CommentWriterView: UIView, CommentWriterViewAction {
     func set(content: String) {
         contentTextView.text = content
         NotificationCenter.default.post(
-            name: NSNotification.Name.UITextViewTextDidChange,
+            name: UITextView.textDidChangeNotification,
             object: contentTextView)
     }
 }
 
 extension CommentWriterView {
     
-    func didTapSend() {
+    @objc func didTapSend() {
         isSending = true
     }
     
-    func didTapPlaceholder() {
+    @objc func didTapPlaceholder() {
         contentTextView.becomeFirstResponder()
     }
 }
@@ -161,18 +154,18 @@ extension CommentWriterView {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(self.contentDidChangeText),
-            name: NSNotification.Name.UITextViewTextDidChange,
+            name: UITextView.textDidChangeNotification,
             object: nil)
     }
     
     func removeContentObserver() {
         NotificationCenter.default.removeObserver(
             self,
-            name: NSNotification.Name.UITextViewTextDidChange,
+            name: UITextView.textDidChangeNotification,
             object: nil)
     }
     
-    func contentDidChangeText(notif: NSNotification) {
+    @objc func contentDidChangeText(notif: NSNotification) {
         guard let textView = notif.object as? UITextView,
             textView == contentTextView, contentTextView.isFirstResponder else {
                 return

@@ -28,4 +28,9 @@
 - User can view a single post
 - User can view comments of a particular post
 - User can send comments
+<<<<<<< HEAD
+=======
+- Update Firebase
+- Convert to Swift 4
+>>>>>>> develop
 

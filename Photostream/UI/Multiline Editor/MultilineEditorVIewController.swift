@@ -8,13 +8,7 @@
 
 import UIKit
 
-@objc protocol MultilineEditorViewControllerAction: class {
-    
-    func didTapCancel()
-    func didTapSave()
-}
-
-class MultilineEditorViewController: UIViewController, MultilineEditorViewControllerAction {
+class MultilineEditorViewController: UIViewController {
 
     var multilineEditorView: MultilineEditorView!
     var presenter: MultilineEditorModuleInterface!
@@ -44,11 +38,11 @@ class MultilineEditorViewController: UIViewController, MultilineEditorViewContro
         navigationItem.rightBarButtonItem = barItem
     }
     
-    func didTapCancel() {
+    @objc func didTapCancel() {
         presenter.cancel()
     }
     
-    func didTapSave() {
+    @objc func didTapSave() {
         let text = multilineEditorView.textView.text ?? ""
         presenter.save(text: text)
     }

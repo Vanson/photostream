@@ -8,12 +8,7 @@
 
 import UIKit
 
-@objc protocol SettingsViewControllerAction: class {
-    
-    func didTapBack()
-}
-
-class SettingsViewController: UITableViewController, SettingsViewControllerAction {
+class SettingsViewController: UITableViewController {
 
     let reuseId = "Cell"
     
@@ -66,7 +61,7 @@ class SettingsViewController: UITableViewController, SettingsViewControllerActio
 
 extension SettingsViewController {
     
-    func didTapBack() {
+    @objc func didTapBack() {
         presenter.exit()
     }
 }

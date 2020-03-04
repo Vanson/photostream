@@ -29,7 +29,7 @@ extension SinglePostViewController {
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
             
-        case UICollectionElementKindSectionHeader:
+        case UICollectionView.elementKindSectionHeader:
             let header = PostListCollectionHeader.dequeue(from: collectionView, for: indexPath)!
             let item = presenter.postData as? PostListCollectionHeaderItem
             header.configure(with: item)

@@ -13,13 +13,7 @@ enum PostDiscoverySceneType {
     case list
 }
 
-@objc protocol PostDiscoveryViewControllerAction: class {
-    
-    func triggerRefresh()
-    func didTapBack()
-}
-
-class PostDiscoveryViewController: UICollectionViewController, PostDiscoveryViewControllerAction {
+class PostDiscoveryViewController: UICollectionViewController {
 
     weak var scrollEventListener: ScrollEventListener?
     
@@ -37,7 +31,7 @@ class PostDiscoveryViewController: UICollectionViewController, PostDiscoveryView
     }()
     
     lazy var loadingView: UIActivityIndicatorView! = {
-        let view = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        let view = UIActivityIndicatorView(style: .gray)
         view.hidesWhenStopped = true
         return view
     }()
@@ -164,7 +158,7 @@ class PostDiscoveryViewController: UICollectionViewController, PostDiscoveryView
         presenter.viewDidLoad()
     }
     
-    func triggerRefresh() {
+    @objc func triggerRefresh() {
         presenter.refreshPosts()
     }
     
@@ -179,8 +173,11 @@ class PostDiscoveryViewController: UICollectionViewController, PostDiscoveryView
             navigationItem.leftBarButtonItem = nil
         }
     }
+}
+
+extension PostDiscoveryViewController {
     
-    func didTapBack() {
+    @objc func didTapBack() {
         presenter.exit()
     }
 }
@@ -223,7 +220,7 @@ extension PostDiscoveryViewController: PostDiscoveryScene {
         switch sceneType {
         case .list:
             let attributes = collectionView!.collectionViewLayout.layoutAttributesForSupplementaryView(
-                ofKind: UICollectionElementKindSectionHeader,
+                ofKind: UICollectionView.elementKindSectionHeader,
                 at: IndexPath(item: 0, section: index))
             
             var offset = CGPoint.zero

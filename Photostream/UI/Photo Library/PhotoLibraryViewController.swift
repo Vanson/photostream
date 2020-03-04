@@ -14,12 +14,7 @@ enum PhotoLibraryViewControllerStyle {
     case style1, style2
 }
 
-@objc protocol PhotoLibraryViewControllerAction: class {
-    
-    func didTapDimView()
-}
-
-class PhotoLibraryViewController: UIViewController, PhotoLibraryViewControllerAction {
+class PhotoLibraryViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
@@ -106,7 +101,7 @@ class PhotoLibraryViewController: UIViewController, PhotoLibraryViewControllerAc
         presenter.toggleContentMode(animated: true)
     }
     
-    func didTapDimView() {
+    @objc func didTapDimView() {
         scrollHandler.killScroll()
         UIView.animate(withDuration: 0.25) { 
             self.cropContentViewConstraintTop.constant = 0

@@ -14,13 +14,7 @@ protocol UserTableCellDelegate: class {
     func didTapDisplayName(cell: UserTableCell)
 }
 
-@objc protocol UserTableCellAction: class {
-    
-    func didTapAction()
-    func didTapDisplayNameLabel()
-}
-
-class UserTableCell: UITableViewCell, UserTableCellAction {
+class UserTableCell: UITableViewCell {
     
     weak var delegate: UserTableCellDelegate?
     
@@ -33,7 +27,7 @@ class UserTableCell: UITableViewCell, UserTableCellAction {
         self.init(style: .default, reuseIdentifier: UserTableCell.reuseId)
     }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         initSetup()
     }
@@ -61,7 +55,7 @@ class UserTableCell: UITableViewCell, UserTableCellAction {
         displayNameLabel = UILabel()
         displayNameLabel.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.medium)
         
-        actionLoadingView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        actionLoadingView = UIActivityIndicatorView(style: .gray)
         actionLoadingView.hidesWhenStopped = true
         actionLoadingView.cornerRadius = actionButton.cornerRadius
         actionLoadingView.borderWidth = actionButton.borderWidth
@@ -104,11 +98,11 @@ class UserTableCell: UITableViewCell, UserTableCellAction {
         displayNameLabel.frame = rect
     }
     
-    func didTapAction() {
+    @objc func didTapAction() {
         delegate?.didTapAction(cell: self)
     }
     
-    func didTapDisplayNameLabel() {
+    @objc func didTapDisplayNameLabel() {
         delegate?.didTapDisplayName(cell: self)
     }
 }
